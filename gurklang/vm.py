@@ -132,7 +132,7 @@ def make_builtins(scope_id: int):
         (identifier, (code, rest)) = stack
         if identifier.tag != "atom":
             fail(f"{identifier} is not an atom")
-        if code.tag != "code" and code.tag != "native":
+        if code.tag not in ["code", "native"]:
             fail(f"{code} is not code")
         return rest, scope.with_member(identifier.value, code)
 
